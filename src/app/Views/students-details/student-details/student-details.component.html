@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    {{student.firstName}} {{student.lastName}}
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <td>Module</td>
+      <td>Note</td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let note of student.notes">
+        <td>{{note.name}}</td>
+        <td>{{note.note}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

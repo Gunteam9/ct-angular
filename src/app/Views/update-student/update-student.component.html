@@ -1,1 +1,83 @@
-<p>update-student works!</p>
+<div class="container">
+  <div>
+    <h1>Modification d'un étudiant</h1>
+
+
+
+    <form [formGroup]="form">
+
+      <div class="form-group">
+        <label>Etudiant:</label>
+        <select class="form-control" (change)="onChangeStudent($event)">
+          <option></option>
+          <option *ngFor="let student of getStudents()">{{student.id}}: {{student.firstName}} {{student.lastName}}</option>
+        </select>
+      </div>
+    </form>
+
+    <br />
+
+    <div *ngIf="isSelected">
+
+      <h1>{{student.firstName}} {{student.lastName}}</h1>
+
+      <table class="table">
+        <tr>
+          <td>Prénom</td>
+          <td><input type="text" [(ngModel)]="firstName" /></td>
+        </tr>
+        <tr>
+          <td>Nom</td>
+          <td><input type="tsxt" [(ngModel)]="lastName" /></td>
+        </tr>
+        <tr>
+          <td>Date de naissance</td>
+          <td><input type="text" [(ngModel)]="date" /></td>
+        </tr>
+        <tr>
+          <td>Numéro de téléphone</td>
+          <td><input type="text" [(ngModel)]="phone" /></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="text" [(ngModel)]="email" /></td>
+        </tr>
+        <tr>
+          <td>Boursier</td>
+          <td><input type="checkbox" [(ngModel)]="holder" /></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Programmation</td>
+          <td><input type="number" [(ngModel)]="programmation" /></td>
+        </tr>
+        <tr>
+          <td>Compilation</td>
+          <td><input type="number" [(ngModel)]="compilation" /></td>
+        </tr>
+        <tr>
+          <td>Compléxité</td>
+          <td><input type="number" [(ngModel)]="complexity" /></td>
+        </tr>
+        <tr>
+          <td>Intelligence articifielle</td>
+          <td><input type="number" [(ngModel)]="ai" /></td>
+        </tr>
+        <tr>
+          <td>Anglais</td>
+          <td><input type="number" [(ngModel)]="english" /></td>
+        </tr>
+        <tr>
+          <td>(Vide = aucune note)</td>
+        </tr>
+
+        <tr>
+          <td><input type="button" (click)="updateStudent()" value="Valider" class="btn btn-primary" [routerLink]="['/']" /> </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

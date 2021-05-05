@@ -9,8 +9,9 @@ import { RemoveStudentComponent } from './Views/remove-student/remove-student.co
 import {RouterModule} from '@angular/router';
 import {StudentService} from './Services/student.service';
 import {AppRoutingModule} from './app-routing.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StudentNoDetailsComponent } from './Views/students-details/student-no-details/student-no-details.component';
+import { StudentDetailsComponent } from './Views/students-details/student-details/student-details.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,14 @@ import { StudentNoDetailsComponent } from './Views/students-details/student-no-d
     StudentsDetailsComponent,
     UpdateStudentComponent,
     RemoveStudentComponent,
-    StudentNoDetailsComponent
+    StudentNoDetailsComponent,
+    StudentDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

@@ -7,9 +7,10 @@
         <td>Boursier</td>
         <td>Moyenne</td>
       </thead>
-      <tr app-student-no-details *ngFor="let student of students" [student]="student">
-
-      </tr>
+      <tbody>
+        <tr app-student-no-details *ngFor="let student of students; let i = index" [student]="student" [routerLink]="['DetailsStudent/' + i]">
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

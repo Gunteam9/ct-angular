@@ -1,1 +1,12 @@
-<p>remove-student works!</p>
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label>Etudiant:</label>
+    <select class="form-control" (change)="onChangeStudent($event)">
+      <option></option>
+      <option *ngFor="let student of getStudents()">{{student.id}}: {{student.firstName}} {{student.lastName}}</option>
+    </select>
+  </div>
+
+  <input type="button" (click)="deleteStudent()" value="Supprimer" />
+</form>

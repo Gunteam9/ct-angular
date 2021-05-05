@@ -8,22 +8,23 @@ import {Notes} from '../Model/notes';
 })
 export class StudentService {
 
-  private idCounter: number;
+  private idCounter = 0;
   private students: Student[] = [];
 
   constructor() { }
 
   public addStudent(firstName: string, lastName: string, date: string, phone: string, email: string, holder: boolean, notes: Notes[]): void {
     this.students.push(new Student(this.idCounter, firstName, lastName, date, phone, email, holder, notes));
+    this.idCounter++;
   }
 
   public removeStudent(id: number): void {
-    this.students = this.students.filter(obj => obj !== this.getStudent(id));
+    this.students = this.students.filter(obj => obj != this.getStudent(id));
   }
 
   public updateStudent(id: number, firstName: string, lastName: string, date: string, phone: string, email: string, holder: boolean, notes: Notes[]): void {
     for (let i = 0; i < this.students.length; i++) {
-      if (this.students[i].id === id) {
+      if (this.students[i].id == id) {
         this.students[i] = new Student(this.idCounter, firstName, lastName, date, phone, email, holder, notes);
       }
     }
@@ -31,7 +32,7 @@ export class StudentService {
 
   public getStudent(id: number): Student {
     for (const item of this.students) {
-      if (item.id === id) {
+      if (item.id == id) {
         return item;
       }
     }
@@ -39,5 +40,15 @@ export class StudentService {
 
   public getStudents(): Student[] {
     return this.students;
+  }
+
+  public getMean(id: number): number {
+    const s = this.getStudent(id);
+    let res = 0;
+    for (const n of s.notes) {
+      res += n.note;
+    }
+    res /= s.notes.length;
+    return res;
   }
 }
