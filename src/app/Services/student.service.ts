@@ -8,18 +8,32 @@ import {Notes} from '../Model/notes';
 })
 export class StudentService {
 
+
   private idCounter = 0;
   private students: Student[] = [];
 
-  constructor() { }
+  constructor() {
+    const savedData: Student[] = JSON.parse(localStorage.getItem('Students'));
+
+    if (savedData != null && savedData.length > 0) {
+      for (let i = 0; i < savedData.length; i++) {
+        this.students.push(savedData[i]);
+      }
+    }
+  }
 
   public addStudent(firstName: string, lastName: string, date: string, phone: string, email: string, holder: boolean, notes: Notes[]): void {
     this.students.push(new Student(this.idCounter, firstName, lastName, date, phone, email, holder, notes));
     this.idCounter++;
+
+    localStorage.setItem('Students', JSON.stringify(this.students));
   }
 
   public removeStudent(id: number): void {
     this.students = this.students.filter(obj => obj != this.getStudent(id));
+
+    localStorage.setItem('Students', JSON.stringify(this.students));
+
   }
 
   public updateStudent(id: number, firstName: string, lastName: string, date: string, phone: string, email: string, holder: boolean, notes: Notes[]): void {
@@ -28,6 +42,8 @@ export class StudentService {
         this.students[i] = new Student(this.idCounter, firstName, lastName, date, phone, email, holder, notes);
       }
     }
+
+    localStorage.setItem('Students', JSON.stringify(this.students));
   }
 
   public getStudent(id: number): Student {

@@ -1,12 +1,15 @@
-<form [formGroup]="form">
+<div class="container">
+  <h1>Supprimer un étudiant</h1>
+  <form [formGroup]="form">
 
-  <div class="form-group">
-    <label>Etudiant:</label>
-    <select class="form-control" (change)="onChangeStudent($event)">
-      <option></option>
-      <option *ngFor="let student of getStudents()">{{student.id}}: {{student.firstName}} {{student.lastName}}</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label>Etudiant:</label>
+      <select class="form-control" (change)="onChangeStudent($event)">
+        <option></option>
+        <option *ngFor="let student of getStudents()">{{student.id}}: {{student.firstName}} {{student.lastName}}</option>
+      </select>
+    </div>
 
-  <input type="button" (click)="deleteStudent()" value="Supprimer" />
-</form>
+    <input type="button" (click)="deleteStudent()" value="Supprimer" />
+  </form>
+</div>
