@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <td>Nom</td>
+        <td>Prénom</td>
+        <td>Boursier</td>
+        <td>Moyenne</td>
+      </thead>
+      <tr app-student-no-details *ngFor="let student of students" [student]="student">
+
+      </tr>
+    </table>
+  </div>
+</div>
